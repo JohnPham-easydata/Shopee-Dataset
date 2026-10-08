@@ -1,38 +1,65 @@
-# Shopee Thailand Dataset — Easy Data
+# Shopee Datasets and Data Quality Guides by Easy Data
 
-A practical guide to the public historical Shopee sample published by [Easy Data](https://easydata.io.vn/).
+Explore historical Shopee diaper listings, understand the fields, and build a careful first analysis. Maintained by [Easy Data](https://easydata.io.vn/), the dataset publisher.
 
-## Access the sample
+**Start here:** [View the Shopee sample and documentation](https://easydata.io.vn/data-sample/free-shopee-dataset/?utm_source=github&utm_medium=referral&utm_campaign=shopee_dataset&utm_content=readme_sample).
 
-[View the dataset, public worksheet and CSV download](https://easydata.io.vn/data-sample/free-shopee-dataset/). Data is hosted at the linked source, not bundled in this repository.
+## Choose a dataset
 
-## Coverage
+| Collection | Recorded coverage | Download and documentation |
+| --- | --- | --- |
+| Thailand starter sample | January 31, 2025; 540 unique shop/item pairs; 151 shops; 23 fields; THB | [Easy Data sample page](https://easydata.io.vn/data-sample/free-shopee-dataset/) · [Kaggle CSV and Data Card](https://www.kaggle.com/datasets/johnphamed/shopee-thailand-diaper-listings-january-2025) |
+| Six-market diaper collection | November 18, 2025 crawl date; 24,896 rows; 19,686 unique domain/shop/product keys; six Excel workbooks | [Kaggle workbooks and Data Card](https://www.kaggle.com/datasets/johnphamed/shopee-diaper-listings-six-markets-november-2025) · [Original Drive folder](https://drive.google.com/drive/folders/1-ynfBFXTlHJ6S4Hq52QEjfs0xSjga-N-) |
 
-| Item | Details |
-| --- | --- |
-| Market | Thailand |
-| Category | Diaper listings |
-| Recorded date | January 31, 2025 |
-| Size | 540 unique shop-and-item pairs from 151 shops |
-| Fields | 23 |
-| Currency | Thai baht (THB) |
+Files are hosted at the linked sources. This repository provides a guide to choosing and using them. These are separate collections with different schemas and sampling coverage.
+
+## Six-market coverage
+
+| Market | Currency | Rows | Unique listing keys | Shops |
+| --- | --- | ---: | ---: | ---: |
+| Indonesia | IDR | 8,851 | 7,233 | 1,938 |
+| Malaysia | MYR | 2,328 | 1,520 | 481 |
+| Philippines | PHP | 4,265 | 3,644 | 722 |
+| Singapore | SGD | 1,373 | 1,076 | 338 |
+| Thailand | THB | 2,176 | 1,257 | 285 |
+| Vietnam | VND | 5,903 | 4,956 | 1,017 |
+
+Counts were checked in the supplied workbooks. A listing key combines domain, shop_id and product_id. Repeated keys remain in the source, so rows are not unique products. Each workbook contains a Multi-Modal Comparison sheet. Indonesia has 46 columns; the other markets have 47, including discount.
+
+The recorded crawl date is November 18, 2025 and the recorded parse date is December 11, 2025. Upload dates do not indicate fresh collection. Time zones are not specified.
 
 ## Getting started
 
-1. Download the CSV from the sample page.
-2. Import it into Excel, Power BI or your analysis tool.
-3. Keep `shopId` and `itemId` as text; use them together as the listing key.
-4. Check variant prices before comparing offers.
-5. Keep missing values separate from zero.
+1. Choose the small Thailand CSV for an introductory Excel or Power BI exercise. Choose the six-market workbooks for duplicate-key checks and image/text annotation comparisons.
+2. Keep identifiers as text. The starter CSV uses shopId and itemId; the workbooks use domain, shop_id and product_id.
+3. Check missing values and repeated keys before aggregating. Inspect source_url filters and conflicting rows before deciding which observation to retain.
+4. Keep currencies separate. Normalize pack quantities and variants before comparing unit prices.
+5. Preserve the original brand field alongside the image-based and text-based annotations. Review disagreements manually. Model confidence is not measured accuracy.
+6. Split classification datasets by listing key to prevent repeated listings appearing in both training and evaluation sets.
+
+For a step-by-step introductory walkthrough, see the [Shopee Thailand data quality notebook](https://www.kaggle.com/code/johnphamed/shopee-thailand-dataset-data-quality-guide).
+
+## Useful first outputs
+
+- A table of row counts, unique listing keys and missing identifiers by market.
+- Missing-value rates for the fields used in a dashboard.
+- A review queue for image/text brand disagreements.
+- Price distributions within one currency, with variant and pack-size limitations stated.
 
 ## Interpretation limits
 
-This snapshot does not establish current prices, monthly sales, market share or trends. Source sales counters are not verified transactions. Review the source documentation before interpreting them.
+These historical samples do not establish current prices, complete category coverage, market share or growth. Source URLs in the six-market files include price filters and sales sorting. Country row counts are not a measure of country demand.
 
-## About Easy Data
+Source sales counters, including monthly_sold and sold, are not audited transactions. A field name does not prove a complete calendar-month reporting window. Multiplying a counter by a listing price does not establish verified revenue.
 
-[Easy Data](https://easydata.io.vn/) provides custom e-commerce data collection for Southeast Asian marketplaces. For sample methodology and project enquiries, visit the website.
+Model-generated categories, brands and explanations can be wrong. Matching image and text labels do not make them ground truth. Review the relevant Data Card before using the data in a report.
 
-## Questions
+## Need a dataset for your project?
 
-Open an issue for documentation corrections. Include the relevant field or example, without private customer information.
+Visit [Easy Data for marketplace data enquiries](https://easydata.io.vn/?utm_source=github&utm_medium=referral&utm_campaign=shopee_dataset&utm_content=readme_enquiry). Describe the marketplace, countries, categories, required fields and collection frequency so the scope can be discussed.
+
+## Attribution and corrections
+
+Cite Easy Data and the specific dataset release you used. Reuse licensing is not specified for these datasets; public access does not establish unrestricted reuse rights. This project is not endorsed by Shopee.
+
+Open a repository issue for documentation corrections and include the relevant field or example without private customer information.
