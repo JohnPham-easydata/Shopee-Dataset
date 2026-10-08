@@ -12,8 +12,15 @@ Explore historical Shopee product listings, understand the fields, and build a c
 | Six-market diaper collection | November 18, 2025 crawl date; 24,896 rows; 19,686 unique domain/shop/product keys; six Excel workbooks | [Kaggle workbooks and Data Card](https://www.kaggle.com/datasets/johnphamed/shopee-diaper-listings-six-markets-november-2025) · [Original Drive folder](https://drive.google.com/drive/folders/1-ynfBFXTlHJ6S4Hq52QEjfs0xSjga-N-) |
 | Thailand nine-category collection | May 31, 2025; 19,072 unique shop/item pairs; 5,943 shops; 23 fields; THB | [Kaggle workbooks and Data Card](https://www.kaggle.com/datasets/johnphamed/shopee-thailand-nine-categories-may-2025) · [Original Drive folder](https://drive.google.com/drive/folders/1HK5PrWfq2gg1ZWggAcocLTbPqqCUqRyq) |
 | Singapore collection views | August 18, 2025; 2,996 identifiable observations; 2,727 distinct shop/product pairs; 968 shops; SGD | [Kaggle workbooks and Data Card](https://www.kaggle.com/datasets/johnphamed/shopee-singapore-listing-samples-august-2025) · [Original Drive folder](https://drive.google.com/drive/folders/14f9Uj9D5uG7gEw2r6YEnUYGz7EC1HueD) |
+| Thailand March nine-category collection | March 31, 2025; 4,299 unique shop/item pairs; 1,400 shops; 23 fields; THB | [Kaggle workbooks and Data Card](https://www.kaggle.com/datasets/johnphamed/shopee-thailand-nine-categories-march-2025) · [Original Drive folder](https://drive.google.com/drive/folders/1uo06N2asg6gJn1xrgfyQmDr4qOXpRPwT) |
 
 Files are hosted at the linked sources. This repository provides a guide to choosing and using them. These are separate collections with different schemas and sampling coverage. The May collection covers mobile/tablets, pet food, carbonated drinks/tonics, bath/shower, face masks, sunscreen, shampoo/conditioner, diapers and milk formula. Do not assume the collections form a comparable time series.
+
+## March and May Thailand samples
+
+The [March 2025 collection](https://www.kaggle.com/datasets/johnphamed/shopee-thailand-nine-categories-march-2025) contains 4,299 listings across the same nine category labels, compared with 19,072 in May. There are 2,966 shared shopId/itemId pairs and 1,333 March pairs absent from the May sample. Sampling differs: absence does not prove delisting, and row-count changes do not measure market growth. Compare only matched listings after checking variants and pack sizes.
+
+March quality notes: normalize mixed Excel/text date values; 772 brands are blank; 1,163 reference prices are zero, including every Milk Formula row; five rows have sold greater than historySold. The Data Card explains how to preserve raw values and handle these checks.
 
 ## Singapore store, keyword and category samples
 
@@ -45,7 +52,7 @@ The recorded crawl date is November 18, 2025 and the recorded parse date is Dece
 ## Getting started
 
 1. Choose the small Thailand CSV for an introductory Excel or Power BI exercise. Choose the six-market workbooks for duplicate-key checks and image/text annotation comparisons, or the August Singapore files for comparing collection views.
-2. Keep identifiers as text. The starter CSV and May Thailand workbooks use shopId and itemId; the November and August Singapore workbooks use domain, shop_id and product_id.
+2. Keep identifiers as text. The starter CSV and March/May Thailand workbooks use shopId and itemId; the November and August Singapore workbooks use domain, shop_id and product_id.
 3. Check missing values and repeated keys before aggregating. Inspect source_url filters and conflicting rows before deciding which observation to retain.
 4. Keep currencies separate. Normalize pack quantities and variants before comparing unit prices.
 5. Preserve the original brand field alongside the image-based and text-based annotations. Review disagreements manually. Model confidence is not measured accuracy.
