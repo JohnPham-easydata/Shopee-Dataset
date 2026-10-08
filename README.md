@@ -1,6 +1,6 @@
-# Shopee Datasets and Data Quality Guides by Easy Data
+# Marketplace Datasets and Data Quality Guides by Easy Data
 
-Explore historical Shopee product listings, understand the fields, and build a careful first analysis. Maintained by [Easy Data](https://easydata.io.vn/), the dataset publisher.
+Explore historical marketplace product listings, understand the fields, and build a careful first analysis. Maintained by [Easy Data](https://easydata.io.vn/), the dataset publisher.
 
 **Start here:** [View the Shopee sample and documentation](https://easydata.io.vn/data-sample/free-shopee-dataset/?utm_source=github&utm_medium=referral&utm_campaign=shopee_dataset&utm_content=readme_sample).
 
@@ -13,6 +13,7 @@ Explore historical Shopee product listings, understand the fields, and build a c
 | Thailand nine-category collection | May 31, 2025; 19,072 unique shop/item pairs; 5,943 shops; 23 fields; THB | [Kaggle workbooks and Data Card](https://www.kaggle.com/datasets/johnphamed/shopee-thailand-nine-categories-may-2025) · [Original Drive folder](https://drive.google.com/drive/folders/1HK5PrWfq2gg1ZWggAcocLTbPqqCUqRyq) |
 | Singapore collection views | August 18, 2025; 2,996 identifiable observations; 2,727 distinct shop/product pairs; 968 shops; SGD | [Kaggle workbooks and Data Card](https://www.kaggle.com/datasets/johnphamed/shopee-singapore-listing-samples-august-2025) · [Original Drive folder](https://drive.google.com/drive/folders/14f9Uj9D5uG7gEw2r6YEnUYGz7EC1HueD) |
 | Thailand March nine-category collection | March 31, 2025; 4,299 unique shop/item pairs; 1,400 shops; 23 fields; THB | [Kaggle workbooks and Data Card](https://www.kaggle.com/datasets/johnphamed/shopee-thailand-nine-categories-march-2025) · [Original Drive folder](https://drive.google.com/drive/folders/1uo06N2asg6gJn1xrgfyQmDr4qOXpRPwT) |
+| Vietnam appliance collection | November 4–5, 2025; 4 CSVs; 718 observations; 461 Shopee and 128 TikTok Shop listing keys; VND | [Kaggle CSVs and Data Card](https://www.kaggle.com/datasets/johnphamed/vietnam-appliance-listings-shopee-and-tiktok-shop) |
 
 Files are hosted at the linked sources. This repository provides a guide to choosing and using them. These are separate collections with different schemas and sampling coverage. The May collection covers mobile/tablets, pet food, carbonated drinks/tonics, bath/shower, face masks, sunscreen, shampoo/conditioner, diapers and milk formula. Do not assume the collections form a comparable time series.
 
@@ -27,6 +28,12 @@ March quality notes: normalize mixed Excel/text date values; 772 brands are blan
 The August collection preserves three original workbooks: Category (998 identifiable observations), Keyword (999) and Store (999). Read the [Singapore Data Card](https://www.kaggle.com/datasets/johnphamed/shopee-singapore-listing-samples-august-2025) for overlap counts, exact fields and a practical analysis sequence.
 
 **Quality note:** the Keyword workbook also contains 11,862 incomplete rows without listing identifiers; these are excluded from the 2,996 observation count. Do not forward-fill their identifiers. Store data includes 312 reference prices recorded as -1 and 39 rows with parse times earlier than crawl times. Preserve originals, filter missing keys, and retain query/category/store context when handling repeated listings.
+
+## Vietnam appliance listings: Shopee and TikTok Shop
+
+The [Vietnam appliance sample](https://www.kaggle.com/datasets/johnphamed/vietnam-appliance-listings-shopee-and-tiktok-shop) contains Shopee filtered-search and store views, plus TikTok Shop store and detail views. Its 718 observations cover 589 platform-specific listing keys, not 589 unique physical products. The four original CSV exports are published; raw captures and input workbooks are excluded.
+
+Keep TikTok’s 19-digit identifiers as text. The two TikTok views contain the same 128 listings; join source_itemID to id and shop_id to sellerId. Detail SKU prices differ from store prices for 117 matched listings, so preserve both fields and review variants. Source counters and isSaleItemVerified flags do not prove audited or TikTok-only sales. Read the Data Card for exact crawl dates, missing fields and price-quality checks.
 
 ## Related Australian retail samples
 
