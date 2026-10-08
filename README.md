@@ -1,6 +1,6 @@
 # Shopee Datasets and Data Quality Guides by Easy Data
 
-Explore historical Shopee diaper listings, understand the fields, and build a careful first analysis. Maintained by [Easy Data](https://easydata.io.vn/), the dataset publisher.
+Explore historical Shopee product listings, understand the fields, and build a careful first analysis. Maintained by [Easy Data](https://easydata.io.vn/), the dataset publisher.
 
 **Start here:** [View the Shopee sample and documentation](https://easydata.io.vn/data-sample/free-shopee-dataset/?utm_source=github&utm_medium=referral&utm_campaign=shopee_dataset&utm_content=readme_sample).
 
@@ -10,8 +10,15 @@ Explore historical Shopee diaper listings, understand the fields, and build a ca
 | --- | --- | --- |
 | Thailand starter sample | January 31, 2025; 540 unique shop/item pairs; 151 shops; 23 fields; THB | [Easy Data sample page](https://easydata.io.vn/data-sample/free-shopee-dataset/) · [Kaggle CSV and Data Card](https://www.kaggle.com/datasets/johnphamed/shopee-thailand-diaper-listings-january-2025) |
 | Six-market diaper collection | November 18, 2025 crawl date; 24,896 rows; 19,686 unique domain/shop/product keys; six Excel workbooks | [Kaggle workbooks and Data Card](https://www.kaggle.com/datasets/johnphamed/shopee-diaper-listings-six-markets-november-2025) · [Original Drive folder](https://drive.google.com/drive/folders/1-ynfBFXTlHJ6S4Hq52QEjfs0xSjga-N-) |
+| Thailand nine-category collection | May 31, 2025; 19,072 unique shop/item pairs; 5,943 shops; 23 fields; THB | [Kaggle workbooks and Data Card](https://www.kaggle.com/datasets/johnphamed/shopee-thailand-nine-categories-may-2025) · [Original Drive folder](https://drive.google.com/drive/folders/1HK5PrWfq2gg1ZWggAcocLTbPqqCUqRyq) |
 
-Files are hosted at the linked sources. This repository provides a guide to choosing and using them. These are separate collections with different schemas and sampling coverage.
+Files are hosted at the linked sources. This repository provides a guide to choosing and using them. These are separate collections with different schemas and sampling coverage. The May collection covers mobile/tablets, pet food, carbonated drinks/tonics, bath/shower, face masks, sunscreen, shampoo/conditioner, diapers and milk formula. Do not assume the collections form a comparable time series.
+
+## Related Australian retail samples
+
+[Australian Retail Product Samples, February 2026](https://www.kaggle.com/datasets/johnphamed/australian-retail-product-samples-february-2026) contains 178 records: Amazon Australia (72), Chemist Warehouse (20), Coles (55) and Woolworths (31). These are separate retail sources, not Shopee data.
+
+Use the four workbooks to practice schema mapping and manually reviewed product matching. Fields vary from 16 to 31 columns. Amazon records are dated February 5, 2026; the others February 1. The files have no explicit currency column or store/postcode context, so verify those before price comparisons. Read the Data Card for retailer-specific field meanings and limits.
 
 ## Six-market coverage
 
@@ -31,7 +38,7 @@ The recorded crawl date is November 18, 2025 and the recorded parse date is Dece
 ## Getting started
 
 1. Choose the small Thailand CSV for an introductory Excel or Power BI exercise. Choose the six-market workbooks for duplicate-key checks and image/text annotation comparisons.
-2. Keep identifiers as text. The starter CSV uses shopId and itemId; the workbooks use domain, shop_id and product_id.
+2. Keep identifiers as text. The starter CSV and May Thailand workbooks use shopId and itemId; the November workbooks use domain, shop_id and product_id.
 3. Check missing values and repeated keys before aggregating. Inspect source_url filters and conflicting rows before deciding which observation to retain.
 4. Keep currencies separate. Normalize pack quantities and variants before comparing unit prices.
 5. Preserve the original brand field alongside the image-based and text-based annotations. Review disagreements manually. Model confidence is not measured accuracy.
